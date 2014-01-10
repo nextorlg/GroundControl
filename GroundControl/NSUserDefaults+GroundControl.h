@@ -45,5 +45,17 @@
 - (void)registerDefaultsWithURLRequest:(NSURLRequest *)urlRequest
                                success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *defaults))success
                                failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure;
+/**
+ 
+ */
+- (void)registerDefaultsWithURL:(NSURL *)url
+                            md5:(NSString *)md5;
 
+/**
+ 
+ */
+- (void)registerDefaultsWithURL:(NSURL *)url
+                            md5:(NSString *)md5
+                        success:(void (^)(NSDictionary *defaults))success
+                        failure:(void (^)(NSError *error))failure;
 @end

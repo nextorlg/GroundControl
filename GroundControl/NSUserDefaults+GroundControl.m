@@ -88,4 +88,18 @@
     [[[self class] gc_sharedPropertyListRequestOperationQueue] addOperation:requestOperation];
 }
 
+- (void)registerDefaultsWithURL:(NSURL *)url
+                            md5:(NSString *)md5 {
+    [self registerDefaultsWithURL:url md5:md5 success:nil failure:nil];
+}
+
+- (void)registerDefaultsWithURL:(NSURL *)url
+                            md5:(NSString *)md5
+                        success:(void (^)(NSDictionary *defaults))success
+                        failure:(void (^)(NSError *error))failure
+{
+    NSString *urlString = [url.absoluteString stringByAppendingString:[NSString stringWithFormat:@"?md5=%@", md5]];
+    [self registerDefaultsWithURL:[NSURL URLWithString:urlString] success:success failure:failure];    
+}
+
 @end

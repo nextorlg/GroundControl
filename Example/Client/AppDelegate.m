@@ -26,13 +26,18 @@
 
 #import "NSUserDefaults+GroundControl.h"
 
-static NSString * const kGroundControlDefaultsURLString = @"http://ground-control-demo.herokuapp.com/defaults.plist";
+static NSString * const kGroundControlDefaultsURLString = @"http://localhost:5000/file.plist";
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[NSUserDefaults standardUserDefaults] registerDefaultsWithURL:[NSURL URLWithString:kGroundControlDefaultsURLString]];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaultsWithURL:[NSURL URLWithString:kGroundControlDefaultsURLString] md5:@"9a6cf93fb9b1e6ae9893cffb0f1ed9a3"];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaultsWithURL:[NSURL URLWithString:kGroundControlDefaultsURLString] md5:@"differentmd5"];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
